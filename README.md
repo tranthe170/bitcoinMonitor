@@ -42,7 +42,7 @@ make infra-up # type in yes after verifying the changes TF will make
 make cloud-metabase # this command will forward Metabase port from EC2 to your machine and opens it in the browser
 ```
 
-You can connect metabase to the warehouse with the configs in the [env](https://github.com/tranthe170/bitcoinMonitor/blob/main/env) file. Refer to [this doc](https://www.metabase.com/docs/latest/users-guide/07-dashboards.html) for creating a Metabase dashboard.
+You can connect metabase to the warehouse with the configs in the [env](https://github.com/tranthe170/bitcoinMonitor/blob/master/env) file. Refer to [this doc](https://www.metabase.com/docs/latest/users-guide/07-dashboards.html) for creating a Metabase dashboard.
 
 Create database migrations as shown below.
 
@@ -52,7 +52,7 @@ make db-migration # enter a description, e.g., create some schema
 make warehouse-migration # to run the new migration on your warehouse
 ```
 
-For the [continuous delivery](https://github.com/tranthe170/bitcoinMonitor/blob/main/.github/workflows/cd.yml) to work, set up the infrastructure with terraform, & defined the following repository secrets. You can set up the repository secrets by going to `Settings > Secrets > Actions > New repository secret`.
+For the [continuous delivery](https://github.com/tranthe170/bitcoinMonitor/blob/master/.github/workflows/cd.yml) to work, set up the infrastructure with terraform, & defined the following repository secrets. You can set up the repository secrets by going to `Settings > Secrets > Actions > New repository secret`.
 
 1. **`SERVER_SSH_KEY`**: We can get this by running `terraform -chdir=./terraform output -raw private_key` in the project directory and paste the entire content in a new Action secret called SERVER_SSH_KEY.
 2. **`REMOTE_HOST`**: Get this by running `terraform -chdir=./terraform output -raw ec2_public_dns` in the project directory.
